@@ -13,10 +13,18 @@ namespace NodeCanvas.BehaviourTrees
         sealed public override Alignment2x2 commentsAlignment { get { return Alignment2x2.Right; } }
 
         ///<summary>The decorated connection element</summary>
-        protected Connection decoratedConnection => outConnections.Count > 0 ? outConnections[0] : null;
+        protected Connection decoratedConnection {
+            get { return outConnections.Count > 0 ? outConnections[0] : null; }
+        }
 
         ///<summary>The decorated node element</summary>
-        protected Node decoratedNode => decoratedConnection?.targetNode;
+        protected Node decoratedNode {
+            get
+            {
+                var c = decoratedConnection;
+                return c != null ? c.targetNode : null;
+            }
+        }
 
 
         ///----------------------------------------------------------------------------------------------

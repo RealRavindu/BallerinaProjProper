@@ -33,7 +33,7 @@ namespace NodeCanvas.Framework
 
         public enum EditState
         {
-            None, Dragging, RenamingTitle, EditingComments, ScalingBR, ScalingTL
+            None, Dragging, RenamingTitle, EditingComments, Scaling
         }
 
         public Node[] GatherContainedNodes(Graph graph) {

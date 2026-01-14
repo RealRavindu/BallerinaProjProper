@@ -34,7 +34,7 @@ namespace NodeCanvas.Tasks.Actions
         public float secondsToRun = 1f;
         public VerboseMode verboseMode;
         public LogMode logMode;
-        public BooleanStatus finishStatus = BooleanStatus.Success;
+        public CompactStatus finishStatus = CompactStatus.Success;
 
         protected override string info {
             get { return "Log " + log.ToString() + ( secondsToRun > 0 ? " for " + secondsToRun + " sec." : "" ); }
@@ -70,7 +70,7 @@ namespace NodeCanvas.Tasks.Actions
 
         protected override void OnUpdate() {
             if ( elapsedTime >= secondsToRun ) {
-                EndAction(finishStatus == BooleanStatus.Success ? true : false);
+                EndAction(finishStatus == CompactStatus.Success ? true : false);
             }
         }
 

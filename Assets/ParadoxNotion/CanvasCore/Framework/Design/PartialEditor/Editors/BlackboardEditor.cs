@@ -18,7 +18,7 @@ namespace NodeCanvas.Editor
     ///<summary> Editor for IBlackboards</summary>
     public class BlackboardEditor : EditorObjectWrapper<IBlackboard>
     {
-        private static readonly GUILayoutOption[] LAYOUT = new GUILayoutOption[] { GUILayout.MaxWidth(100), GUILayout.ExpandWidth(true), GUILayout.MinHeight(18) };
+        private static readonly GUILayoutOption[] layoutOptions = new GUILayoutOption[] { GUILayout.MaxWidth(100), GUILayout.ExpandWidth(true), GUILayout.MinHeight(18) };
 
         public static Variable pickedVariable { get; private set; }
         public static IBlackboard pickedVariableBlackboard { get; private set; }
@@ -31,8 +31,6 @@ namespace NodeCanvas.Editor
 
         private SerializedObject serializedContext;
         private SerializedProperty variablesProperty;
-
-        private bool isPrefab => contextObject != null && PrefabUtility.IsPartOfRegularPrefab(contextObject);
 
         //...
         protected override void OnEnable() {
@@ -77,30 +75,23 @@ namespace NodeCanvas.Editor
                 this.variablesProperty = serializedContext.FindProperty(bb.independantVariablesFieldName);
             }
 
-
             //Add variable button
             GUI.backgroundColor = Colors.lightBlue;
-            GUI.enabled = !isPrefab;
             if ( GUILayout.Button("Add Variable") ) {
                 GetAddVariableMenu(bb, contextObject).ShowAsBrowser("Add Variable");
                 Event.current.Use();
             }
-            GUI.enabled = true;
             GUI.backgroundColor = Color.white;
 
             //Simple column header info
-            GUILayout.Label($"▼ <b>{bb}</b> Blackboard Variables");
-            if ( isPrefab ) {
-                EditorGUILayout.HelpBox("Adding, Deleting, and Re-Ordering variables is disabled for prefab instances.\nYou can however override the existing variables of the prefab asset.", MessageType.None);
-            }
-
+            EditorGUILayout.HelpBox($"{bb} Blackboard Variables", MessageType.None);
             if ( bb.variables.Keys.Count != 0 ) {
                 GUILayout.BeginHorizontal();
-                GUILayout.Label("Name", LAYOUT);
-                GUILayout.Label("Value", LAYOUT);
+                GUI.color = Color.yellow;
+                GUILayout.Label("Name", layoutOptions);
+                GUILayout.Label("Value", layoutOptions);
+                GUI.color = Color.white;
                 GUILayout.EndHorizontal();
-            } else {
-                GUILayout.Label("___");
             }
 
             //temp list to work with
@@ -110,7 +101,7 @@ namespace NodeCanvas.Editor
 
             //The actual variables reorderable list
             var options = new EditorUtils.ReorderableListOptions();
-            options.blockReorder = isPrefab;
+            options.blockReorder = contextObject != null ? PrefabUtility.IsPartOfRegularPrefab(contextObject) : false;
             options.unityObjectContext = contextObject;
             options.customItemMenu = (i) => { return GetVariableMenu(tempVariablesList[i], i); };
             EditorUtils.ReorderableList(tempVariablesList, options, (i, isPicked) =>
@@ -137,19 +128,20 @@ namespace NodeCanvas.Editor
         //...
         void DoVariableGUI(Variable data, int index, bool isPicked) {
 
-            if ( data is MissingVariableType missingVariableType ) {
-                GUILayout.Label(data.name, Styles.leftLabel, LAYOUT);
-                GUILayout.Label(ReflectionTools.FriendlyTypeName(missingVariableType.missingType).FormatError(), Styles.leftLabel, LAYOUT);
+            if ( data is MissingVariableType ) {
+                var missingVariableType = (MissingVariableType)data;
+                GUILayout.Label(data.name, Styles.leftLabel, layoutOptions);
+                GUILayout.Label(ReflectionTools.FriendlyTypeName(missingVariableType.missingType).FormatError(), Styles.leftLabel, layoutOptions);
                 return;
             }
 
             //Don't allow name edits in play mode. Instead show just a label
             if ( Application.isPlaying ) {
                 if ( data.varType != typeof(VariableSeperator) ) {
-                    GUILayout.Label(data.name, Styles.leftLabel, LAYOUT);
+                    GUILayout.Label(data.name, Styles.leftLabel, layoutOptions);
                 } else {
                     GUI.color = Color.yellow;
-                    GUILayout.Label(string.Format("<b>{0}</b>", data.name.ToUpper()), Styles.leftLabel, LAYOUT);
+                    GUILayout.Label(string.Format("<b>{0}</b>", data.name.ToUpper()), Styles.leftLabel, layoutOptions);
                     GUI.color = Color.white;
                 }
                 ShowDataFieldGUI(data, index);
@@ -174,13 +166,14 @@ namespace NodeCanvas.Editor
         //Data label (left side)
         void ShowDataLabelGUI(Variable data, int index) {
             var e = Event.current;
-            var isVariablePrefabInstanceModified = variablesProperty != null && variablesProperty.GetArrayElementAtIndex(index).prefabOverride;
+            var separator = data.value as VariableSeperator;
+            var isVariablePrefabInstanceModified = variablesProperty != null ? variablesProperty.GetArrayElementAtIndex(index).prefabOverride : false;
 
             //this is a separator
-            if ( data.value is VariableSeperator separator ) {
+            if ( separator != null ) {
                 if ( !separator.isEditingName ) {
                     GUI.color = Color.yellow;
-                    GUILayout.Label(string.Format("<b>{0}</b>", data.name.ToUpper()), Styles.leftLabel, LAYOUT);
+                    GUILayout.Label(string.Format("<b>{0}</b>", data.name.ToUpper()), Styles.leftLabel, layoutOptions);
                     GUI.color = Color.white;
                     if ( e.type == EventType.MouseDown && e.button == 0 && e.clickCount == 2 && GUILayoutUtility.GetLastRect().Contains(e.mousePosition) ) {
                         separator.isEditingName = true;
@@ -190,7 +183,7 @@ namespace NodeCanvas.Editor
                 }
 
                 if ( separator.isEditingName ) {
-                    var newName = EditorGUILayout.DelayedTextField(data.name, LAYOUT);
+                    var newName = EditorGUILayout.DelayedTextField(data.name, layoutOptions);
                     if ( data.name != newName ) {
                         UndoUtility.RecordObject(contextObject, "Separator Rename");
                         data.name = newName;
@@ -209,7 +202,7 @@ namespace NodeCanvas.Editor
                 //not a separator
                 var wasFontStyle = GUI.skin.textField.fontStyle;
                 GUI.skin.textField.fontStyle = isVariablePrefabInstanceModified ? FontStyle.Bold : FontStyle.Normal;
-                var newName = EditorGUILayout.DelayedTextField(data.name, LAYOUT);
+                var newName = EditorGUILayout.DelayedTextField(data.name, layoutOptions);
                 if ( data.name != newName ) {
                     UndoUtility.RecordObject(contextObject, "Variable Name Change");
                     data.name = newName;
@@ -236,14 +229,14 @@ namespace NodeCanvas.Editor
                 var memberName = data.propertyPath.Substring(idx + 1);
                 GUI.color = new Color(0.8f, 0.8f, 1);
                 var suf = data.debugBoundValue && Application.isPlaying ? data.value.ToStringAdvanced() : typeName.Split('.').Last();
-                GUILayout.Label(string.Format(".{0} ({1}) {2}", memberName, suf, data.debugBoundValue ? "*" : string.Empty), Styles.leftLabel, LAYOUT);
+                GUILayout.Label(string.Format(".{0} ({1}) {2}", memberName, suf, data.debugBoundValue ? "*" : string.Empty), Styles.leftLabel, layoutOptions);
                 GUI.color = Color.white;
                 return;
             }
 
             GUI.color = data.isExposedPublic ? GUI.color.WithAlpha(0.5f) : GUI.color;
             EditorGUIUtility.labelWidth = 10;
-            var newVal = VariableField(data, contextObject, LAYOUT);
+            var newVal = VariableField(data, contextObject, layoutOptions);
             EditorGUIUtility.labelWidth = 0;
             if ( !Equals(data.value, newVal) ) {
                 UndoUtility.RecordObject(contextObject, "Variable Value Change");
@@ -255,7 +248,8 @@ namespace NodeCanvas.Editor
 
         ///<summary>Return get add variable menu</summary>
         GenericMenu GetAddVariableMenu(IBlackboard bb, UnityEngine.Object contextParent) {
-            void AddNewVariable(System.Type t) {
+            System.Action<System.Type> AddNewVariable = (t) =>
+            {
                 UndoUtility.RecordObject(contextParent, "Variable Added");
                 var name = "my" + t.FriendlyName();
                 while ( bb.GetVariable(name) != null ) {
@@ -263,27 +257,30 @@ namespace NodeCanvas.Editor
                 }
                 bb.AddVariable(name, t);
                 UndoUtility.SetDirty(contextParent);
-            }
+            };
 
-            void AddBoundProp(PropertyInfo p) {
+            System.Action<PropertyInfo> AddBoundProp = (p) =>
+            {
                 UndoUtility.RecordObject(contextParent, "Variable Added");
                 var newVar = bb.AddVariable(p.Name, p.PropertyType);
                 newVar.BindProperty(p);
                 UndoUtility.SetDirty(contextParent);
-            }
+            };
 
-            void AddBoundField(FieldInfo f) {
+            System.Action<FieldInfo> AddBoundField = (f) =>
+            {
                 UndoUtility.RecordObject(contextParent, "Variable Added");
                 var newVar = bb.AddVariable(f.Name, f.FieldType);
                 newVar.BindProperty(f);
                 UndoUtility.SetDirty(contextParent);
-            }
+            };
 
-            void AddSeparator() {
+            System.Action AddSeparator = () =>
+            {
                 UndoUtility.RecordObject(contextParent, "Separator Added");
                 bb.AddVariable("Separator (Double Click To Rename)", new VariableSeperator());
                 UndoUtility.SetDirty(contextParent);
-            }
+            };
 
             var menu = new GenericMenu();
             menu = EditorUtils.GetPreferedTypesSelectionMenu(typeof(object), AddNewVariable, menu, "New", true);
@@ -311,38 +308,30 @@ namespace NodeCanvas.Editor
 
         ///<summary>Get a menu for variable</summary>
         GenericMenu GetVariableMenu(Variable data, int index) {
-             var menu = new GenericMenu();
+            var menu = new GenericMenu();
             if ( data.varType == typeof(VariableSeperator) ) {
                 menu.AddItem(new GUIContent("Rename"), false, () => { ( data.value as VariableSeperator ).isEditingName = true; });
-                if ( isPrefab ) {
-                    menu.AddDisabledItem(new GUIContent("Remove"));
-                } else {
-                    menu.AddItem(new GUIContent("Remove"), false, () =>
-                    {
-                        UndoUtility.RecordObject(contextObject, "Remove Variable");
-                        bb.RemoveVariable(data.name);
-                        UndoUtility.SetDirty(contextObject);
-                    });
-                }
-                menu.AddItem(new GUIContent("Exposed Public"), data.isExposedPublic, () =>
+                menu.AddItem(new GUIContent("Remove"), false, () =>
                 {
-                    UndoUtility.RecordObject(contextObject, "Modify Variable");
-                    data.isExposedPublic = !data.isExposedPublic;
+                    UndoUtility.RecordObject(contextObject, "Remove Variable");
+                    bb.RemoveVariable(data.name);
                     UndoUtility.SetDirty(contextObject);
                 });
                 return menu;
             }
 
-            void BindProp(PropertyInfo p) {
+            System.Action<PropertyInfo> BindProp = (p) =>
+            {
                 UndoUtility.RecordObject(contextObject, "Bind Variable");
                 data.BindProperty(p);
                 UndoUtility.SetDirty(contextObject);
-            }
-            void BindField(FieldInfo f) {
+            };
+            System.Action<FieldInfo> BindField = (f) =>
+            {
                 UndoUtility.RecordObject(contextObject, "Bind Variable");
                 data.BindProperty(f);
                 UndoUtility.SetDirty(contextObject);
-            }
+            };
 
             menu.AddDisabledItem(new GUIContent(string.Format("Type: {0}", data.varType.FriendlyName())));
 
@@ -362,16 +351,12 @@ namespace NodeCanvas.Editor
                 menu = EditorUtils.GetStaticPropertySelectionMenu(type, data.varType, BindProp, false, false, menu, "Bind (Static)");
             }
 
-            if ( isPrefab ) {
-                menu.AddDisabledItem(new GUIContent("Duplicate"));
-            } else {
-                menu.AddItem(new GUIContent("Duplicate"), false, () =>
-                {
-                    UndoUtility.RecordObject(contextObject, "Duplicate Variable");
-                    data.Duplicate(bb);
-                    UndoUtility.SetDirty(contextObject);
-                });
-            }
+            menu.AddItem(new GUIContent("Duplicate"), false, () =>
+            {
+                UndoUtility.RecordObject(contextObject, "Duplicate Variable");
+                data.Duplicate(bb);
+                UndoUtility.SetDirty(contextObject);
+            });
 
             if ( bb is BlackboardSource ) { //TODO: avoid this check
                 if ( !data.isPropertyBound ) {
@@ -425,28 +410,25 @@ namespace NodeCanvas.Editor
                 });
             }
 
-            void ChangeType(System.Type t) {
+            System.Action<System.Type> ChangeType = (t) =>
+            {
                 UndoUtility.RecordObject(contextObject, "Change Variable Type");
                 bb.ChangeVariableType(data, t);
                 UndoUtility.SetDirty(contextObject);
-            }
+            };
 
             menu = EditorUtils.GetPreferedTypesSelectionMenu(typeof(object), ChangeType, menu, "Change Type");
 
-            if ( isPrefab ) {
-                menu.AddDisabledItem(new GUIContent("Delete Variable"));
-            } else {
-                menu.AddItem(new GUIContent("Delete Variable"), false, () =>
-                {
-                    if ( EditorUtility.DisplayDialog("Delete Variable '" + data.name + "'", "Are you sure?", "Yes", "No") ) {
-                        UndoUtility.RecordObject(contextObject, "Delete Variable");
-                        bb.RemoveVariable(data.name);
-                        GUIUtility.hotControl = 0;
-                        GUIUtility.keyboardControl = 0;
-                        UndoUtility.SetDirty(contextObject);
-                    }
-                });
-            }
+            menu.AddItem(new GUIContent("Delete Variable"), false, () =>
+            {
+                if ( EditorUtility.DisplayDialog("Delete Variable '" + data.name + "'", "Are you sure?", "Yes", "No") ) {
+                    UndoUtility.RecordObject(contextObject, "Delete Variable");
+                    bb.RemoveVariable(data.name);
+                    GUIUtility.hotControl = 0;
+                    GUIUtility.keyboardControl = 0;
+                    UndoUtility.SetDirty(contextObject);
+                }
+            });
 
             return menu;
         }
@@ -471,14 +453,15 @@ namespace NodeCanvas.Editor
             }
 
             ///----------------------------------------------------------------------------------------------
-            o = EditorUtils.DirectFieldControl(GUIContent.none, o, t, contextParent, null, out bool handled, layoutOptions);
+            bool handled;
+            o = EditorUtils.DirectFieldControl(GUIContent.none, o, t, contextParent, null, out handled, layoutOptions);
             if ( handled ) { return o; }
             ///----------------------------------------------------------------------------------------------
 
             //If some other type, show it in the generic object editor window with its true value type
             t = o != null ? o.GetType() : t;
-            if ( GUILayout.Button(string.Format("{0} {1}", t.FriendlyName(), ( o is IList list ) ? list.Count.ToString() : string.Empty), layoutOptions) ) {
-                //we use bb.GetVariableByID to avoid undo creating new instance of variable, and thus generic inspector left inspecting something else
+            if ( GUILayout.Button(string.Format("{0} {1}", t.FriendlyName(), ( o is IList ) ? ( (IList)o ).Count.ToString() : string.Empty), layoutOptions) ) {
+                //we use bb.GetVariableByID to avoid undo creating new instance of variable and thus generic inspector, left inspecting something else
                 GenericInspectorWindow.Show(data.name, t, contextParent, () => { return bb.GetVariableByID(data.ID).value; }, (newValue) => { bb.GetVariableByID(data.ID).value = newValue; });
             }
 

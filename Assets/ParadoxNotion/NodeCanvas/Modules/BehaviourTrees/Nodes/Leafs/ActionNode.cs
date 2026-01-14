@@ -26,7 +26,9 @@ namespace NodeCanvas.BehaviourTrees
             set { _action = value; }
         }
 
-        public override string name => base.name.ToUpper();
+        public override string name {
+            get { return base.name.ToUpper(); }
+        }
 
         protected override Status OnExecute(Component agent, IBlackboard blackboard) {
 
@@ -42,11 +44,15 @@ namespace NodeCanvas.BehaviourTrees
         }
 
         protected override void OnReset() {
-            action?.EndAction(null);
+            if ( action != null ) {
+                action.EndAction(null);
+            }
         }
 
         public override void OnGraphPaused() {
-            action?.Pause();
+            if ( action != null ) {
+                action.Pause();
+            }
         }
     }
 }

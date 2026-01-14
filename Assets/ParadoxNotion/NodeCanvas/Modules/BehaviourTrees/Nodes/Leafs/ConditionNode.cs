@@ -26,7 +26,9 @@ namespace NodeCanvas.BehaviourTrees
             set { _condition = value; }
         }
 
-        public override string name => base.name.ToUpper();
+        public override string name {
+            get { return base.name.ToUpper(); }
+        }
 
         protected override Status OnExecute(Component agent, IBlackboard blackboard) {
             if ( condition == null ) {
@@ -41,7 +43,7 @@ namespace NodeCanvas.BehaviourTrees
         }
 
         protected override void OnReset() {
-            condition?.Disable();
+            if ( condition != null ) { condition.Disable(); }
         }
     }
 }

@@ -8,7 +8,7 @@ namespace NodeCanvas.BehaviourTrees
 
     [Name("Repeat")]
     [Category("Decorators")]
-    [Description("Repeats the child either x times, or until it returns the specified status, or forever.")]
+    [Description("Repeats the child either x times or until it returns the specified status, or forever.")]
     [ParadoxNotion.Design.Icon("Repeat")]
     public class Repeater : BTDecorator
     {
@@ -20,11 +20,17 @@ namespace NodeCanvas.BehaviourTrees
             RepeatForever = 2
         }
 
+        public enum RepeatUntilStatus
+        {
+            Failure = 0,
+            Success = 1
+        }
+
         public RepeaterMode repeaterMode = RepeaterMode.RepeatTimes;
         [ShowIf("repeaterMode", 0)]
         public BBParameter<int> repeatTimes = 1;
         [ShowIf("repeaterMode", 1)]
-        public BooleanStatus repeatUntilStatus = BooleanStatus.Success;
+        public RepeatUntilStatus repeatUntilStatus = RepeatUntilStatus.Success;
 
         private int currentIteration = 1;
 

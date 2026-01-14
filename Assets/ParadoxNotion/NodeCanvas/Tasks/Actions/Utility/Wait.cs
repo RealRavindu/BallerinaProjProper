@@ -11,7 +11,7 @@ namespace NodeCanvas.Tasks.Actions
     {
 
         public BBParameter<float> waitTime = 1f;
-        public BooleanStatus finishStatus = BooleanStatus.Success;
+        public CompactStatus finishStatus = CompactStatus.Success;
 
         protected override string info {
             get { return string.Format("Wait {0} sec.", waitTime); }
@@ -19,7 +19,7 @@ namespace NodeCanvas.Tasks.Actions
 
         protected override void OnUpdate() {
             if ( elapsedTime >= waitTime.value ) {
-                EndAction(finishStatus == BooleanStatus.Success ? true : false);
+                EndAction(finishStatus == CompactStatus.Success ? true : false);
             }
         }
     }

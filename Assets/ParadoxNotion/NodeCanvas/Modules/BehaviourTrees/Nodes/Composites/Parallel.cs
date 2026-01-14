@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using NodeCanvas.Framework;
 using ParadoxNotion;
 using ParadoxNotion.Design;
@@ -14,11 +15,12 @@ namespace NodeCanvas.BehaviourTrees
     [Color("ff64cb")]
     public class Parallel : BTComposite
     {
+
         public enum ParallelPolicy
         {
-            FirstFailure = 0,
-            FirstSuccess = 1,
-            FirstSuccessOrFailure = 2,
+            FirstFailure,
+            FirstSuccess,
+            FirstSuccessOrFailure
         }
 
         [Tooltip("The policy determines when the Parallel node will end and return its Status.")]
@@ -106,14 +108,14 @@ namespace NodeCanvas.BehaviourTrees
 
         public override string GetConnectionInfo(int i) {
             if ( dynamic && status == Status.Running ) {
-                return string.Format("Branch Finished: {0}", finishedConnections[i].ToString());
+                return finishedConnections[i] ? "Repeating" : null;
             }
             return null;
         }
 
 
         protected override void OnNodeGUI() {
-            GUILayout.Label(( dynamic ? "<b>REPEAT</b>\n" : string.Empty ) + ( string.Format("<b>{0}</b>", policy.ToString().SplitCamelCase()) ));
+            GUILayout.Label(( dynamic ? "<b>REPEAT</b>\n" : "" ) + policy.ToString().SplitCamelCase());
         }
 
 #endif

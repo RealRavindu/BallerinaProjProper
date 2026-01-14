@@ -16,7 +16,7 @@ namespace NodeCanvas.Tasks.Actions
         public BBParameter<object> log;
         public BBParameter<string> prefix;
         public float secondsToRun = 1f;
-        public BooleanStatus finishStatus = BooleanStatus.Success;
+        public CompactStatus finishStatus = CompactStatus.Success;
 
         protected override string info {
             get { return "Log '" + log + "'" + ( secondsToRun > 0 ? " for " + secondsToRun + " sec." : "" ); }
@@ -28,7 +28,7 @@ namespace NodeCanvas.Tasks.Actions
 
         protected override void OnUpdate() {
             if ( elapsedTime >= secondsToRun ) {
-                EndAction(finishStatus == BooleanStatus.Success ? true : false);
+                EndAction(finishStatus == CompactStatus.Success ? true : false);
             }
         }
     }

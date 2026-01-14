@@ -10,14 +10,14 @@ namespace NodeCanvas.Tasks.Actions
     public class ForceFinishGraph : ActionTask
     {
 
-        public BooleanStatus finishStatus = BooleanStatus.Success;
+        public CompactStatus finishStatus = CompactStatus.Success;
 
         protected override void OnExecute() {
             var graph = ownerSystem as Graph;
             if ( graph != null ) {
-                graph.Stop(finishStatus == BooleanStatus.Success);
+                graph.Stop(finishStatus == CompactStatus.Success);
             }
-            EndAction(finishStatus == BooleanStatus.Success);
+            EndAction(finishStatus == CompactStatus.Success);
         }
     }
 }

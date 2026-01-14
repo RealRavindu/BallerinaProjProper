@@ -22,7 +22,7 @@ namespace NodeCanvas.Tasks.Actions
         }
 
         protected override bool OnCheck() {
-            var speed = agent.linearVelocity.magnitude;
+            var speed = agent.velocity.magnitude;
             return OperationTools.Compare((float)speed, (float)value.value, checkType, differenceThreshold);
         }
     }
