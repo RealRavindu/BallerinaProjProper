@@ -30,9 +30,9 @@ namespace NodeCanvas.Tasks.Actions {
 
 		//Called once per frame while the action is active.
 		protected override void OnUpdate() {
-			currentCharge += rate.value;
+			currentCharge += rate.value * Time.deltaTime;
             robot.value.GetComponent<Blackboard>().SetVariableValue("currentCharge", currentCharge);
-			chargeBar.fillAmount = currentCharge;
+			chargeBar.fillAmount = currentCharge/ robot.value.GetComponent<Blackboard>().GetVariableValue<float>("maxCharge");
         }
 
 		//Called when the task is disabled.

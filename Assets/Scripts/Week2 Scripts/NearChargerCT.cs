@@ -1,10 +1,13 @@
 using NodeCanvas.Framework;
 using ParadoxNotion.Design;
+using UnityEngine;
 
 
 namespace NodeCanvas.Tasks.Conditions {
 
 	public class NearChargerCT : ConditionTask {
+		public Transform chargerPad;
+		public Transform robot;
 
 		//Use for initialization. This is called only once in the lifetime of the task.
 		//Return null if init was successfull. Return an error string otherwise
@@ -25,7 +28,9 @@ namespace NodeCanvas.Tasks.Conditions {
 		//Called once per frame while the condition is active.
 		//Return whether the condition is success or failure.
 		protected override bool OnCheck() {
-			return true;
+			//check if chargerbot is close to chargerpad
+			if ((chargerPad.position - robot.position).magnitude < 0.5f) return true;
+			return false;
 		}
 	}
 }
