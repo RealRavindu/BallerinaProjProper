@@ -12,7 +12,6 @@ public class PlayerController : MonoBehaviour
         rb = GetComponent<Rigidbody>();
         camera = GameObject.FindWithTag("MainCamera");
 
-        rb.maxLinearVelocity = maxVelocity; 
     }
 
     // Update is called once per frame
@@ -25,7 +24,9 @@ public class PlayerController : MonoBehaviour
         {
             moving = false;
         }
-
+        Vector3 currentVelocity = rb.linearVelocity;
+        if ((currentVelocity.x > maxVelocity)) currentVelocity.x = maxVelocity;
+        rb.linearVelocity = currentVelocity;
 
         //camera control
         Vector3 currentCamPos = camera.transform.position;

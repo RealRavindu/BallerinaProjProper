@@ -17,8 +17,9 @@ namespace NodeCanvas.Tasks.Actions {
 
 		//Called once per frame while the action is active.
 		protected override void OnUpdate() {
-			agent.transform.localScale -= Vector3.one * shrinkRate * Time.deltaTime;
-		}
+			if(agent.transform.localScale.x > 9) agent.transform.localScale -= Vector3.one * shrinkRate * Time.deltaTime;
+
+        }
 
 		//Called when the task is disabled.
 		protected override void OnStop() {
