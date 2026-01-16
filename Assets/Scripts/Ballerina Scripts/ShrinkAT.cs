@@ -1,24 +1,23 @@
 using NodeCanvas.Framework;
 using ParadoxNotion.Design;
 using UnityEngine;
-using UnityEngine;
 
 namespace NodeCanvas.Tasks.Actions {
 
-	
-	public class RotatingAT : ActionTask {
+	public class ShrinkAT : ActionTask {
 
-        public float rotateRate;
-        protected override string OnInit() {
+		public float shrinkRate;
+		protected override string OnInit() {
 			return null;
 		}
 
 		protected override void OnExecute() {
-			//EndAction(true);
+			
 		}
 
+		//Called once per frame while the action is active.
 		protected override void OnUpdate() {
-			agent.transform.Rotate(new Vector3(0,rotateRate*Time.deltaTime,0));
+			agent.transform.localScale -= Vector3.one * shrinkRate * Time.deltaTime;
 		}
 
 		//Called when the task is disabled.
