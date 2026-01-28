@@ -4,7 +4,7 @@ using UnityEngine;
 public class PeopleScript : MonoBehaviour
 {
     Rigidbody rb;
-    public float waitDuration = 4, moveDuration = 2, minDist, maxDist;
+    public float waitDuration, moveDuration, minDist, maxDist;
     bool moving = false, pickedDir = false;
     Vector3 force;
     float t;

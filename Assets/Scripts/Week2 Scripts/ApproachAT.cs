@@ -8,11 +8,13 @@ namespace NodeCanvas.Tasks.Actions {
 	public class ApproachAT : ActionTask {
 		public BBParameter<Transform> targetTransform;
 		public BBParameter<float> speed;
+		public int id;
 
 		//Use for initialization. This is called only once in the lifetime of the task.
 		//Return null if init was successfull. Return an error string otherwise
 		protected override string OnInit() {
-			
+			if (id ==1) targetTransform = agent.GetComponent<Blackboard>().GetVariableValue<Transform>("WaypointA");
+			else if (id ==2) targetTransform = agent.GetComponent<Blackboard>().GetVariableValue<Transform>("WaypointB");
             return null;
 		}
 
