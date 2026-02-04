@@ -1,14 +1,21 @@
 using NodeCanvas.Framework;
 using ParadoxNotion.Design;
-
+using UnityEngine.AI;
+using UnityEngine;
 
 namespace NodeCanvas.Tasks.Actions {
 
-	public class SeekAT : ActionTask {
+	public class HideAT : ActionTask {
 
+		public BBParameter<Transform> targetTransform;
+		public float fleeDistance;
+		public float hideFrequency;
+		private float timeSinceLastHide;
+		private NavMeshAgent navAgent;
 		//Use for initialization. This is called only once in the lifetime of the task.
 		//Return null if init was successfull. Return an error string otherwise
 		protected override string OnInit() {
+			navAgent = agent.GetComponent<NavMeshAgent>();
 			return null;
 		}
 
@@ -16,12 +23,18 @@ namespace NodeCanvas.Tasks.Actions {
 		//Call EndAction() to mark the action as finished, either in success or failure.
 		//EndAction can be called from anywhere.
 		protected override void OnExecute() {
-			EndAction(true);
+			SetHideDestination();
+			
 		}
 
 		//Called once per frame while the action is active.
 		protected override void OnUpdate() {
-			
+			timeSinceLastHide += Time.deltaTime;
+			if (timeSinceLastHide > hideFrequency)
+			{
+				SetHideDestination();
+				timeSinceLastHide = 0;
+			}
 		}
 
 		//Called when the task is disabled.
@@ -33,5 +46,12 @@ namespace NodeCanvas.Tasks.Actions {
 		protected override void OnPause() {
 			
 		}
+
+		void SetHideDestination()
+		{
+            Vector3 directionAwayFromTarget = (agent.transform.position - targetTransform.value.position).normalized;
+            Vector3 targetPosition = directionAwayFromTarget * fleeDistance + agent.transform.position;
+            navAgent.SetDestination(targetPosition);
+        }
 	}
 }
