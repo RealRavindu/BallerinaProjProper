@@ -7,7 +7,7 @@ namespace NodeCanvas.Tasks.Conditions {
 	public class WaitCT : ConditionTask {
 
 		float timePassed;
-		public float timeToWait = 3;
+		public float timeToWait;
 		//Use for initialization. This is called only once in the lifetime of the task.
 		//Return null if init was successfull. Return an error string otherwise
 		protected override string OnInit(){
