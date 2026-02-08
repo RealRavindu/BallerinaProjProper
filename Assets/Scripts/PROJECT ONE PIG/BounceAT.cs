@@ -5,7 +5,7 @@ using UnityEngine;
 namespace NodeCanvas.Tasks.Actions {
 
 	public class BounceAT : ActionTask {
-		public float frequency, amplitude, angle;
+		public float frequency, amplitude;
 		protected override string OnInit() {
 			return null;
 		}
@@ -14,7 +14,7 @@ namespace NodeCanvas.Tasks.Actions {
 		}
 
 		protected override void OnUpdate() {
-				agent.transform.position = new Vector2(agent.transform.position.x, Mathf.Sin(agent.transform.position.y * frequency - (angle*Time.deltaTime)) * amplitude);
+				agent.transform.position = new Vector2(agent.transform.position.x, Mathf.Sin(Time.time * frequency) * amplitude + agent.transform.position.y);
 		}
 
 		protected override void OnStop() {
