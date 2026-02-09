@@ -1,35 +1,42 @@
 using NodeCanvas.Framework;
 using ParadoxNotion.Design;
+using UnityEngine;
+using UnityEngine.AI;
 
 
 namespace NodeCanvas.Tasks.Actions {
 
 	public class RestingAT : ActionTask {
 
-		//Use for initialization. This is called only once in the lifetime of the task.
-		//Return null if init was successfull. Return an error string otherwise
-		protected override string OnInit() {
+		public BBParameter<float> tiredness;
+		public float restRate;
+		public BBParameter<Transform> pondTransform;
+        public float distFromPond;
+		private NavMeshAgent navAgent;
+        protected override string OnInit() {
+			navAgent = agent.GetComponent<NavMeshAgent>();
 			return null;
 		}
 
-		//This is called once each time the task is enabled.
-		//Call EndAction() to mark the action as finished, either in success or failure.
-		//EndAction can be called from anywhere.
 		protected override void OnExecute() {
-			EndAction(true);
-		}
 
-		//Called once per frame while the action is active.
+            Vector3 displacement = (agent.transform.position - pondTransform.value.position);
+            if (displacement.magnitude < distFromPond)
+            {
+                navAgent.SetDestination(displacement.normalized * (distFromPond - displacement.magnitude) + agent.transform.position);
+            }
+        }
+
 		protected override void OnUpdate() {
-			
+			if((agent.transform.position - pondTransform.value.position).magnitude > distFromPond)
+			{
+				tiredness.value += restRate;
+			}
 		}
-
-		//Called when the task is disabled.
 		protected override void OnStop() {
 			
 		}
 
-		//Called when the task is paused.
 		protected override void OnPause() {
 			
 		}
