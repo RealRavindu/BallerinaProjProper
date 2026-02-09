@@ -1,31 +1,45 @@
 using NodeCanvas.Framework;
 using ParadoxNotion.Design;
+using ParadoxNotion.Serialization.FullSerializer;
+using UnityEngine;
 
+namespace NodeCanvas.Tasks.Conditions
+{
 
-namespace NodeCanvas.Tasks.Conditions {
+    public class CheckingNeedsCT : ConditionTask
+    {
 
-	public class CheckingNeedsCT : ConditionTask {
+        public BBParameter<float> hunger;
+        public BBParameter<float> heat;
+        public BBParameter<float> tiredness;
+        public BBParameter<float> poopness;
+        public float hungerThreshold;
+        public float heatThreshold;
+        public float tirednessThreshold;
+        public float poopnessThreshold;
 
-		//Use for initialization. This is called only once in the lifetime of the task.
-		//Return null if init was successfull. Return an error string otherwise
-		protected override string OnInit(){
-			return null;
-		}
+        protected override string OnInit()
+        {
+            return null;
+        }
 
-		//Called whenever the condition gets enabled.
-		protected override void OnEnable() {
-			
-		}
+        protected override void OnEnable()
+        {
+        }
 
-		//Called whenever the condition gets disabled.
-		protected override void OnDisable() {
-			
-		}
+        protected override void OnDisable()
+        {
 
-		//Called once per frame while the condition is active.
-		//Return whether the condition is success or failure.
-		protected override bool OnCheck() {
-			return true;
-		}
-	}
+        }
+
+        protected override bool OnCheck()
+        {
+            if (hunger.value < hungerThreshold) return true;
+            else if (heat.value < heatThreshold) return true;
+            else if (tiredness.value < tirednessThreshold) return true;
+            else if (poopness.value < poopnessThreshold) return true;
+            return false;
+
+        }
+    }
 }

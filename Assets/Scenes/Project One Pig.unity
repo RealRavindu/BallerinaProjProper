@@ -1138,25 +1138,47 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _parentBlackboard: {fileID: 0}
-  _serializedBlackboard: '{"_variables":{"hunger":{"_name":"hunger","_id":"c51efb7b-bbad-4475-b602-71f3bf9b75f3","$type":"NodeCanvas.Framework.Variable`1[[System.Single,
-    mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]"},"heat":{"_name":"heat","_id":"ddf9ccdc-e1a0-4ae2-b313-00eb9c419af6","$type":"NodeCanvas.Framework.Variable`1[[System.Single,
-    mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]"},"tiredness":{"_name":"tiredness","_id":"dd30547f-15c8-465f-8340-9866ae743c44","$type":"NodeCanvas.Framework.Variable`1[[System.Single,
-    mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]"},"poopness":{"_name":"poopness","_id":"5892d270-9d26-4363-8f68-d41ec12a15e3","$type":"NodeCanvas.Framework.Variable`1[[System.Single,
-    mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]"}}}'
-  _objectReferences: []
+  _serializedBlackboard: '{"_variables":{"hunger":{"_value":100.0,"_name":"hunger","_id":"c51efb7b-bbad-4475-b602-71f3bf9b75f3","$type":"NodeCanvas.Framework.Variable`1[[System.Single,
+    mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]"},"heat":{"_value":100.0,"_name":"heat","_id":"ddf9ccdc-e1a0-4ae2-b313-00eb9c419af6","$type":"NodeCanvas.Framework.Variable`1[[System.Single,
+    mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]"},"tiredness":{"_value":100.0,"_name":"tiredness","_id":"dd30547f-15c8-465f-8340-9866ae743c44","$type":"NodeCanvas.Framework.Variable`1[[System.Single,
+    mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]"},"poopness":{"_value":100.0,"_name":"poopness","_id":"5892d270-9d26-4363-8f68-d41ec12a15e3","$type":"NodeCanvas.Framework.Variable`1[[System.Single,
+    mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]"},"truffleTransform":{"_value":1,"_name":"truffleTransform","_id":"fda2261e-97ff-4af5-96e6-9e851e59bfdd","$type":"NodeCanvas.Framework.Variable`1[[UnityEngine.Transform,
+    UnityEngine.CoreModule, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null]]"},"pondTransform":{"_value":2,"_name":"pondTransform","_id":"2872f811-bc86-4070-9817-40b360f931eb","$type":"NodeCanvas.Framework.Variable`1[[UnityEngine.Transform,
+    UnityEngine.CoreModule, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null]]"},"humanTransform":{"_value":3,"_name":"humanTransform","_id":"409b95bc-027e-4c36-acdf-e84d0f855f7d","$type":"NodeCanvas.Framework.Variable`1[[UnityEngine.Transform,
+    UnityEngine.CoreModule, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null]]"}}}'
+  _objectReferences:
+  - {fileID: 0}
+  - {fileID: 1331937119}
+  - {fileID: 227807908}
+  - {fileID: 1710767380}
   _serializedVariables:
-  - _json: '{"_name":"hunger","_id":"c51efb7b-bbad-4475-b602-71f3bf9b75f3","$type":"NodeCanvas.Framework.Variable`1[[System.Single,
+  - _json: '{"_value":100.0,"_name":"hunger","_id":"c51efb7b-bbad-4475-b602-71f3bf9b75f3","$type":"NodeCanvas.Framework.Variable`1[[System.Single,
       mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]"}'
     _references: []
-  - _json: '{"_name":"heat","_id":"ddf9ccdc-e1a0-4ae2-b313-00eb9c419af6","$type":"NodeCanvas.Framework.Variable`1[[System.Single,
+  - _json: '{"_value":100.0,"_name":"heat","_id":"ddf9ccdc-e1a0-4ae2-b313-00eb9c419af6","$type":"NodeCanvas.Framework.Variable`1[[System.Single,
       mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]"}'
     _references: []
-  - _json: '{"_name":"tiredness","_id":"dd30547f-15c8-465f-8340-9866ae743c44","$type":"NodeCanvas.Framework.Variable`1[[System.Single,
+  - _json: '{"_value":100.0,"_name":"tiredness","_id":"dd30547f-15c8-465f-8340-9866ae743c44","$type":"NodeCanvas.Framework.Variable`1[[System.Single,
       mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]"}'
     _references: []
-  - _json: '{"_name":"poopness","_id":"5892d270-9d26-4363-8f68-d41ec12a15e3","$type":"NodeCanvas.Framework.Variable`1[[System.Single,
+  - _json: '{"_value":100.0,"_name":"poopness","_id":"5892d270-9d26-4363-8f68-d41ec12a15e3","$type":"NodeCanvas.Framework.Variable`1[[System.Single,
       mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]"}'
     _references: []
+  - _json: '{"_value":1,"_name":"truffleTransform","_id":"fda2261e-97ff-4af5-96e6-9e851e59bfdd","$type":"NodeCanvas.Framework.Variable`1[[UnityEngine.Transform,
+      UnityEngine.CoreModule, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null]]"}'
+    _references:
+    - {fileID: 0}
+    - {fileID: 1331937119}
+  - _json: '{"_value":1,"_name":"pondTransform","_id":"2872f811-bc86-4070-9817-40b360f931eb","$type":"NodeCanvas.Framework.Variable`1[[UnityEngine.Transform,
+      UnityEngine.CoreModule, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null]]"}'
+    _references:
+    - {fileID: 0}
+    - {fileID: 227807908}
+  - _json: '{"_value":1,"_name":"humanTransform","_id":"409b95bc-027e-4c36-acdf-e84d0f855f7d","$type":"NodeCanvas.Framework.Variable`1[[UnityEngine.Transform,
+      UnityEngine.CoreModule, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null]]"}'
+    _references:
+    - {fileID: 0}
+    - {fileID: 1710767380}
 --- !u!114 &1501538073
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1170,16 +1192,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _serializedExposedParameters: []
-  _boundGraphSerialization: '{"type":"NodeCanvas.StateMachines.FSM","nodes":[{"_actionList":{"executionMode":1,"actions":[{"chanceToDevour":10,"$type":"NodeCanvas.Tasks.Actions.PigIdlingAT"},{"frequency":2.5,"amplitude":0.05,"$type":"NodeCanvas.Tasks.Actions.BounceAT"}]},"_color":{"r":1.0,"g":0.42,"b":0.32,"a":1.0},"_name":"IDLING","_position":{"x":602.0,"y":365.6669},"$type":"NodeCanvas.StateMachines.ActionState","$id":"0"},{"_actionList":{"executionMode":1,"actions":[{"$type":"NodeCanvas.Tasks.Actions.devourAT"}]},"_color":{"r":1.0,"g":0.42,"b":0.32,"a":1.0},"_name":"DEVOURING","_position":{"x":438.3332,"y":568.0001},"$type":"NodeCanvas.StateMachines.ActionState","$id":"1"},{"_nestedFSM":{"_value":1},"_position":{"x":875.0,"y":435.0},"$type":"NodeCanvas.StateMachines.NestedFSMState","$id":"2"}],"connections":[{"_sourceNode":{"$ref":"0"},"_targetNode":{"$ref":"1"},"$type":"NodeCanvas.StateMachines.FSMConnection"},{"_sourceNode":{"$ref":"0"},"_targetNode":{"$ref":"2"},"$type":"NodeCanvas.StateMachines.FSMConnection"},{"_condition":{"timeToWait":5.0,"$type":"NodeCanvas.Tasks.Conditions.WaitCT"},"_sourceNode":{"$ref":"1"},"_targetNode":{"$ref":"0"},"$type":"NodeCanvas.StateMachines.FSMConnection"}],"canvasGroups":[],"localBlackboard":{"_variables":{}}}'
+  _boundGraphSerialization: '{"type":"NodeCanvas.StateMachines.FSM","nodes":[{"_actionList":{"executionMode":1,"actions":[{"chanceToDevour":10,"$type":"NodeCanvas.Tasks.Actions.PigIdlingAT"},{"frequency":2.5,"amplitude":0.05,"$type":"NodeCanvas.Tasks.Actions.BounceAT"}]},"_color":{"r":1.0,"g":0.42,"b":0.32,"a":1.0},"_name":"IDLING","_position":{"x":602.0,"y":365.6669},"$type":"NodeCanvas.StateMachines.ActionState","$id":"0"},{"_actionList":{"executionMode":1,"actions":[{"$type":"NodeCanvas.Tasks.Actions.devourAT"},{"targetTransform":{"_value":1},"speed":{"_value":3.0},"$type":"NodeCanvas.Tasks.Actions.ApproachAT"}]},"_color":{"r":1.0,"g":0.42,"b":0.32,"a":1.0},"_name":"DEVOURING","_position":{"x":394.3388,"y":578.6655},"$type":"NodeCanvas.StateMachines.ActionState","$id":"1"},{"_nestedFSM":{"_value":2},"_position":{"x":900.607,"y":492.8943},"$type":"NodeCanvas.StateMachines.NestedFSMState","$id":"2"},{"_conditionList":{"conditions":[]},"_actionList":{"executionMode":1,"actions":[{"hunger":{"_name":"hunger","_targetVariableID":"c51efb7b-bbad-4475-b602-71f3bf9b75f3"},"hungerRate":1.0,"heat":{"_name":"heat","_targetVariableID":"ddf9ccdc-e1a0-4ae2-b313-00eb9c419af6"},"heatRate":1.0,"tiredness":{"_name":"tiredness","_targetVariableID":"dd30547f-15c8-465f-8340-9866ae743c44"},"tirednessRate":2.0,"poopness":{"_name":"poopness","_targetVariableID":"5892d270-9d26-4363-8f68-d41ec12a15e3"},"poopnessRate":3.0,"$type":"NodeCanvas.Tasks.Actions.NeedsDeprecatingAT"}]},"_position":{"x":840.5802,"y":673.5775},"$type":"NodeCanvas.StateMachines.OnFSMUpdate"}],"connections":[{"_sourceNode":{"$ref":"0"},"_targetNode":{"$ref":"1"},"$type":"NodeCanvas.StateMachines.FSMConnection"},{"_condition":{"hunger":{"_name":"hunger","_targetVariableID":"c51efb7b-bbad-4475-b602-71f3bf9b75f3"},"heat":{"_name":"heat","_targetVariableID":"ddf9ccdc-e1a0-4ae2-b313-00eb9c419af6"},"tiredness":{"_name":"tiredness","_targetVariableID":"dd30547f-15c8-465f-8340-9866ae743c44"},"poopness":{"_name":"poopness","_targetVariableID":"5892d270-9d26-4363-8f68-d41ec12a15e3"},"hungerThreshold":25.0,"heatThreshold":10.0,"tirednessThreshold":75.0,"$type":"NodeCanvas.Tasks.Conditions.CheckingNeedsCT"},"_sourceNode":{"$ref":"0"},"_targetNode":{"$ref":"2"},"$type":"NodeCanvas.StateMachines.FSMConnection"},{"_condition":{"timeToWait":5.0,"$type":"NodeCanvas.Tasks.Conditions.WaitCT"},"_sourceNode":{"$ref":"1"},"_targetNode":{"$ref":"0"},"$type":"NodeCanvas.StateMachines.FSMConnection"}],"canvasGroups":[],"localBlackboard":{"_variables":{}}}'
   _boundGraphObjectReferences:
   - {fileID: 0}
+  - {fileID: 1710767380}
   - {fileID: 11400000, guid: 30911a34e5ac6e14baf0c712e319a2d9, type: 2}
   _boundGraphSource:
     _version: 3.33
     _category: 
     _comments: 
-    _translation: {x: 64, y: 53}
-    _zoomFactor: 0.75009584
+    _translation: {x: -32, y: 32}
+    _zoomFactor: 0.6676161
   _firstActivation: 0
   _enableAction: 0
   _disableAction: 0
