@@ -14,7 +14,7 @@ namespace NodeCanvas.Tasks.Actions {
 		}
 
 		protected override void OnUpdate() {
-				agent.transform.position = new Vector2(agent.transform.position.x, Mathf.Sin(Time.time * frequency) * amplitude + agent.transform.position.y);
+				agent.transform.position = new Vector3(agent.transform.position.x, Mathf.Sin(Time.time * frequency) * amplitude + agent.transform.position.y, agent.transform.position.z);
 		}
 
 		protected override void OnStop() {
