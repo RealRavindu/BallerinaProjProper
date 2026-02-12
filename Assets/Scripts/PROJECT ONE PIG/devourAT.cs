@@ -27,6 +27,10 @@ namespace NodeCanvas.Tasks.Actions {
 			}
 			timePassed = 0;
             navAgent.SetDestination(humanTransform.value.position);
+			
+			Camera.main.transform.parent = null;
+			Camera.main.transform.position = blackboard.GetVariableValue<Vector3>("originalCamPos");
+            Camera.main.transform.rotation = Quaternion.Euler(blackboard.GetVariableValue<Vector3>("originalCamRotation"));
         }
 
 		protected override void OnUpdate() {
