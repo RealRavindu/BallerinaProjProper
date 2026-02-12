@@ -45,7 +45,6 @@ namespace NodeCanvas.Tasks.Actions {
 			Camera.main.transform.parent = null;
 			Camera.main.transform.position = blackboard.GetVariableValue<Vector3>("originalCamPos");
             Camera.main.transform.rotation = Quaternion.Euler(blackboard.GetVariableValue<Vector3>("originalCamRotation"));
-            yield return null;
 		}
 	}
 }

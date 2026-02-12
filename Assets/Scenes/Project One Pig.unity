@@ -1196,10 +1196,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _parentBlackboard: {fileID: 0}
-  _serializedBlackboard: '{"_variables":{"hunger":{"_value":200.0,"_name":"hunger","_id":"c51efb7b-bbad-4475-b602-71f3bf9b75f3","$type":"NodeCanvas.Framework.Variable`1[[System.Single,
-    mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]"},"heat":{"_value":87.0,"_name":"heat","_id":"ddf9ccdc-e1a0-4ae2-b313-00eb9c419af6","$type":"NodeCanvas.Framework.Variable`1[[System.Single,
+  _serializedBlackboard: '{"_variables":{"hunger":{"_value":2.0,"_name":"hunger","_id":"c51efb7b-bbad-4475-b602-71f3bf9b75f3","$type":"NodeCanvas.Framework.Variable`1[[System.Single,
+    mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]"},"heat":{"_value":200.0,"_name":"heat","_id":"ddf9ccdc-e1a0-4ae2-b313-00eb9c419af6","$type":"NodeCanvas.Framework.Variable`1[[System.Single,
     mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]"},"tiredness":{"_value":2000.0,"_name":"tiredness","_id":"dd30547f-15c8-465f-8340-9866ae743c44","$type":"NodeCanvas.Framework.Variable`1[[System.Single,
-    mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]"},"poopness":{"_name":"poopness","_id":"5892d270-9d26-4363-8f68-d41ec12a15e3","$type":"NodeCanvas.Framework.Variable`1[[System.Single,
+    mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]"},"poopness":{"_value":200.0,"_name":"poopness","_id":"5892d270-9d26-4363-8f68-d41ec12a15e3","$type":"NodeCanvas.Framework.Variable`1[[System.Single,
     mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]"},"truffleTransform":{"_value":1,"_name":"truffleTransform","_id":"fda2261e-97ff-4af5-96e6-9e851e59bfdd","$type":"NodeCanvas.Framework.Variable`1[[UnityEngine.Transform,
     UnityEngine.CoreModule, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null]]"},"pondTransform":{"_value":2,"_name":"pondTransform","_id":"2872f811-bc86-4070-9817-40b360f931eb","$type":"NodeCanvas.Framework.Variable`1[[UnityEngine.Transform,
     UnityEngine.CoreModule, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null]]"},"humanTransform":{"_value":3,"_name":"humanTransform","_id":"409b95bc-027e-4c36-acdf-e84d0f855f7d","$type":"NodeCanvas.Framework.Variable`1[[UnityEngine.Transform,
@@ -1214,16 +1214,16 @@ MonoBehaviour:
   - {fileID: 1710767380}
   - {fileID: 43331466444992194, guid: 59905cf66f7627c469e0e6516ba1a6f9, type: 3}
   _serializedVariables:
-  - _json: '{"_value":200.0,"_name":"hunger","_id":"c51efb7b-bbad-4475-b602-71f3bf9b75f3","$type":"NodeCanvas.Framework.Variable`1[[System.Single,
+  - _json: '{"_value":2.0,"_name":"hunger","_id":"c51efb7b-bbad-4475-b602-71f3bf9b75f3","$type":"NodeCanvas.Framework.Variable`1[[System.Single,
       mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]"}'
     _references: []
-  - _json: '{"_value":87.0,"_name":"heat","_id":"ddf9ccdc-e1a0-4ae2-b313-00eb9c419af6","$type":"NodeCanvas.Framework.Variable`1[[System.Single,
+  - _json: '{"_value":200.0,"_name":"heat","_id":"ddf9ccdc-e1a0-4ae2-b313-00eb9c419af6","$type":"NodeCanvas.Framework.Variable`1[[System.Single,
       mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]"}'
     _references: []
   - _json: '{"_value":2000.0,"_name":"tiredness","_id":"dd30547f-15c8-465f-8340-9866ae743c44","$type":"NodeCanvas.Framework.Variable`1[[System.Single,
       mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]"}'
     _references: []
-  - _json: '{"_name":"poopness","_id":"5892d270-9d26-4363-8f68-d41ec12a15e3","$type":"NodeCanvas.Framework.Variable`1[[System.Single,
+  - _json: '{"_value":200.0,"_name":"poopness","_id":"5892d270-9d26-4363-8f68-d41ec12a15e3","$type":"NodeCanvas.Framework.Variable`1[[System.Single,
       mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]"}'
     _references: []
   - _json: '{"_value":1,"_name":"truffleTransform","_id":"fda2261e-97ff-4af5-96e6-9e851e59bfdd","$type":"NodeCanvas.Framework.Variable`1[[UnityEngine.Transform,
@@ -1275,7 +1275,7 @@ MonoBehaviour:
     _version: 3.33
     _category: 
     _comments: 
-    _translation: {x: -347, y: -212}
+    _translation: {x: -306, y: -299}
     _zoomFactor: 0.9946174
   _firstActivation: 0
   _enableAction: 0
@@ -1914,7 +1914,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2070656346}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0.43909407}
   m_LocalScale: {x: 0.33793437, y: 0.30983698, z: 0.3641582}
   m_ConstrainProportionsScale: 0
