@@ -27,12 +27,9 @@ namespace NodeCanvas.Tasks.Actions {
             {
 
 				float distanceToMove = (distFromPond - displacement.magnitude);
-				Debug.Log("Distance to move: " + distanceToMove);
                 Vector3 directionToMove = displacement.normalized * distanceToMove;
-				Debug.Log("Direction to move: " + directionToMove);
                 Vector3 targetPoint = directionToMove + agent.transform.position;
-				targetPoint.y = agent.transform.position.y;
-				Debug.Log("Target point: " + targetPoint);
+				//targetPoint.y = agent.transform.position.y;
                 navAgent.SetDestination(targetPoint);
             }
         }
@@ -41,7 +38,7 @@ namespace NodeCanvas.Tasks.Actions {
 
 			if((agent.transform.position - pondTransform.value.position).magnitude > distFromPond)
 			{
-				tiredness.value += restRate;
+				tiredness.value += restRate * Time.deltaTime;
 			}
 
 		}

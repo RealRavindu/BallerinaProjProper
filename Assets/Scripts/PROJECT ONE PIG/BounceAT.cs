@@ -6,7 +6,9 @@ namespace NodeCanvas.Tasks.Actions {
 
 	public class BounceAT : ActionTask {
 		public float frequency, amplitude;
+		private Vector3 originalPosition;
 		protected override string OnInit() {
+			originalPosition = agent.transform.position;
 			return null;
 		}
 
@@ -18,7 +20,7 @@ namespace NodeCanvas.Tasks.Actions {
 		}
 
 		protected override void OnStop() {
-			
+			agent.transform.position = originalPosition;
 		}
 
 		protected override void OnPause() {
