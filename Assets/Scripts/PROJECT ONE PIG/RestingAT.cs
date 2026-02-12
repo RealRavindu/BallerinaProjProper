@@ -21,14 +21,18 @@ namespace NodeCanvas.Tasks.Actions {
 		protected override void OnExecute() {
 
             Vector3 displacement = (agent.transform.position - pondTransform.value.position);
+			displacement.y = 0;
+			Debug.Log(displacement);
             if (displacement.magnitude < distFromPond)
             {
 
 				float distanceToMove = (distFromPond - displacement.magnitude);
-
+				Debug.Log("Distance to move: " + distanceToMove);
                 Vector3 directionToMove = displacement.normalized * distanceToMove;
-
+				Debug.Log("Direction to move: " + directionToMove);
                 Vector3 targetPoint = directionToMove + agent.transform.position;
+				targetPoint.y = agent.transform.position.y;
+				Debug.Log("Target point: " + targetPoint);
                 navAgent.SetDestination(targetPoint);
             }
         }

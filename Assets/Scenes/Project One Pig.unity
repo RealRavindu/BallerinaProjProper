@@ -1196,9 +1196,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _parentBlackboard: {fileID: 0}
-  _serializedBlackboard: '{"_variables":{"hunger":{"_value":100.0,"_name":"hunger","_id":"c51efb7b-bbad-4475-b602-71f3bf9b75f3","$type":"NodeCanvas.Framework.Variable`1[[System.Single,
-    mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]"},"heat":{"_value":100.0,"_name":"heat","_id":"ddf9ccdc-e1a0-4ae2-b313-00eb9c419af6","$type":"NodeCanvas.Framework.Variable`1[[System.Single,
-    mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]"},"tiredness":{"_value":100.0,"_name":"tiredness","_id":"dd30547f-15c8-465f-8340-9866ae743c44","$type":"NodeCanvas.Framework.Variable`1[[System.Single,
+  _serializedBlackboard: '{"_variables":{"hunger":{"_value":200.0,"_name":"hunger","_id":"c51efb7b-bbad-4475-b602-71f3bf9b75f3","$type":"NodeCanvas.Framework.Variable`1[[System.Single,
+    mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]"},"heat":{"_value":87.0,"_name":"heat","_id":"ddf9ccdc-e1a0-4ae2-b313-00eb9c419af6","$type":"NodeCanvas.Framework.Variable`1[[System.Single,
+    mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]"},"tiredness":{"_value":75.0,"_name":"tiredness","_id":"dd30547f-15c8-465f-8340-9866ae743c44","$type":"NodeCanvas.Framework.Variable`1[[System.Single,
     mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]"},"poopness":{"_value":100.0,"_name":"poopness","_id":"5892d270-9d26-4363-8f68-d41ec12a15e3","$type":"NodeCanvas.Framework.Variable`1[[System.Single,
     mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]"},"truffleTransform":{"_value":1,"_name":"truffleTransform","_id":"fda2261e-97ff-4af5-96e6-9e851e59bfdd","$type":"NodeCanvas.Framework.Variable`1[[UnityEngine.Transform,
     UnityEngine.CoreModule, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null]]"},"pondTransform":{"_value":2,"_name":"pondTransform","_id":"2872f811-bc86-4070-9817-40b360f931eb","$type":"NodeCanvas.Framework.Variable`1[[UnityEngine.Transform,
@@ -1212,13 +1212,13 @@ MonoBehaviour:
   - {fileID: 1710767380}
   - {fileID: 43331466444992194, guid: 59905cf66f7627c469e0e6516ba1a6f9, type: 3}
   _serializedVariables:
-  - _json: '{"_value":100.0,"_name":"hunger","_id":"c51efb7b-bbad-4475-b602-71f3bf9b75f3","$type":"NodeCanvas.Framework.Variable`1[[System.Single,
+  - _json: '{"_value":200.0,"_name":"hunger","_id":"c51efb7b-bbad-4475-b602-71f3bf9b75f3","$type":"NodeCanvas.Framework.Variable`1[[System.Single,
       mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]"}'
     _references: []
-  - _json: '{"_value":100.0,"_name":"heat","_id":"ddf9ccdc-e1a0-4ae2-b313-00eb9c419af6","$type":"NodeCanvas.Framework.Variable`1[[System.Single,
+  - _json: '{"_value":87.0,"_name":"heat","_id":"ddf9ccdc-e1a0-4ae2-b313-00eb9c419af6","$type":"NodeCanvas.Framework.Variable`1[[System.Single,
       mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]"}'
     _references: []
-  - _json: '{"_value":100.0,"_name":"tiredness","_id":"dd30547f-15c8-465f-8340-9866ae743c44","$type":"NodeCanvas.Framework.Variable`1[[System.Single,
+  - _json: '{"_value":75.0,"_name":"tiredness","_id":"dd30547f-15c8-465f-8340-9866ae743c44","$type":"NodeCanvas.Framework.Variable`1[[System.Single,
       mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]"}'
     _references: []
   - _json: '{"_value":100.0,"_name":"poopness","_id":"5892d270-9d26-4363-8f68-d41ec12a15e3","$type":"NodeCanvas.Framework.Variable`1[[System.Single,
@@ -1257,7 +1257,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _serializedExposedParameters: []
-  _boundGraphSerialization: '{"type":"NodeCanvas.StateMachines.FSM","nodes":[{"_actionList":{"executionMode":1,"actions":[{"chanceToDevour":10,"m_normal":1,"$type":"NodeCanvas.Tasks.Actions.PigIdlingAT"},{"frequency":2.5,"amplitude":0.05,"_isDisabled":true,"$type":"NodeCanvas.Tasks.Actions.BounceAT"}]},"_color":{"r":1.0,"g":0.42,"b":0.32,"a":1.0},"_name":"IDLING","_position":{"x":602.0,"y":364.0185},"$type":"NodeCanvas.StateMachines.ActionState","$id":"0"},{"_actionList":{"executionMode":1,"actions":[{"m_angry":2,"humanTransform":{"_name":"humanTransform","_targetVariableID":"409b95bc-027e-4c36-acdf-e84d0f855f7d"},"$type":"NodeCanvas.Tasks.Actions.devourAT"},{"frequency":30.0,"amplitude":0.3,"$type":"NodeCanvas.Tasks.Actions.BounceAT"}]},"_color":{"r":1.0,"g":0.42,"b":0.32,"a":1.0},"_name":"DEVOURING","_position":{"x":394.3388,"y":578.6655},"$type":"NodeCanvas.StateMachines.ActionState","$id":"1"},{"_nestedFSM":{"_value":3},"_position":{"x":747.1073,"y":478.0586},"$type":"NodeCanvas.StateMachines.NestedFSMState","$id":"2"},{"_conditionList":{"conditions":[]},"_actionList":{"executionMode":1,"actions":[{"hunger":{"_name":"hunger","_targetVariableID":"c51efb7b-bbad-4475-b602-71f3bf9b75f3"},"hungerRate":1.0,"heat":{"_name":"heat","_targetVariableID":"ddf9ccdc-e1a0-4ae2-b313-00eb9c419af6"},"heatRate":1.0,"tiredness":{"_name":"tiredness","_targetVariableID":"dd30547f-15c8-465f-8340-9866ae743c44"},"tirednessRate":2.0,"poopness":{"_name":"poopness","_targetVariableID":"5892d270-9d26-4363-8f68-d41ec12a15e3"},"poopnessRate":3.0,"$type":"NodeCanvas.Tasks.Actions.NeedsDeprecatingAT"}]},"_position":{"x":703.637,"y":606.6708},"$type":"NodeCanvas.StateMachines.OnFSMUpdate"}],"connections":[{"_sourceNode":{"$ref":"0"},"_targetNode":{"$ref":"1"},"$type":"NodeCanvas.StateMachines.FSMConnection"},{"_condition":{"hunger":{"_name":"hunger","_targetVariableID":"c51efb7b-bbad-4475-b602-71f3bf9b75f3"},"heat":{"_name":"heat","_targetVariableID":"ddf9ccdc-e1a0-4ae2-b313-00eb9c419af6"},"tiredness":{"_name":"tiredness","_targetVariableID":"dd30547f-15c8-465f-8340-9866ae743c44"},"poopness":{"_name":"poopness","_targetVariableID":"5892d270-9d26-4363-8f68-d41ec12a15e3"},"hungerThreshold":25.0,"heatThreshold":10.0,"tirednessThreshold":75.0,"$type":"NodeCanvas.Tasks.Conditions.CheckingNeedsCT"},"_sourceNode":{"$ref":"0"},"_targetNode":{"$ref":"2"},"$type":"NodeCanvas.StateMachines.FSMConnection"},{"_condition":{"timeToWait":5.0,"$type":"NodeCanvas.Tasks.Conditions.WaitCT"},"_sourceNode":{"$ref":"1"},"_targetNode":{"$ref":"0"},"$type":"NodeCanvas.StateMachines.FSMConnection"},{"_condition":{"hunger":{"_name":"hunger","_targetVariableID":"c51efb7b-bbad-4475-b602-71f3bf9b75f3"},"heat":{"_name":"heat","_targetVariableID":"ddf9ccdc-e1a0-4ae2-b313-00eb9c419af6"},"tiredness":{"_name":"tiredness","_targetVariableID":"dd30547f-15c8-465f-8340-9866ae743c44"},"poopness":{"_name":"poopness","_targetVariableID":"5892d270-9d26-4363-8f68-d41ec12a15e3"},"hungerThreshold":25.0,"heatThreshold":10.0,"tirednessThreshold":75.0,"_invert":true,"$type":"NodeCanvas.Tasks.Conditions.CheckingNeedsCT"},"_sourceNode":{"$ref":"2"},"_targetNode":{"$ref":"0"},"$type":"NodeCanvas.StateMachines.FSMConnection"}],"canvasGroups":[],"localBlackboard":{"_variables":{}}}'
+  _boundGraphSerialization: '{"type":"NodeCanvas.StateMachines.FSM","nodes":[{"_actionList":{"executionMode":1,"actions":[{"chanceToDevour":1,"m_normal":1,"$type":"NodeCanvas.Tasks.Actions.PigIdlingAT"},{"frequency":2.5,"amplitude":0.05,"_isDisabled":true,"$type":"NodeCanvas.Tasks.Actions.BounceAT"}]},"_color":{"r":1.0,"g":0.42,"b":0.32,"a":1.0},"_name":"IDLING","_position":{"x":602.0,"y":364.0185},"$type":"NodeCanvas.StateMachines.ActionState","$id":"0"},{"_actionList":{"executionMode":1,"actions":[{"m_angry":2,"humanTransform":{"_name":"humanTransform","_targetVariableID":"409b95bc-027e-4c36-acdf-e84d0f855f7d"},"$type":"NodeCanvas.Tasks.Actions.devourAT"},{"frequency":30.0,"amplitude":0.3,"$type":"NodeCanvas.Tasks.Actions.BounceAT"}]},"_color":{"r":1.0,"g":0.42,"b":0.32,"a":1.0},"_name":"DEVOURING","_position":{"x":394.3388,"y":578.6655},"$type":"NodeCanvas.StateMachines.ActionState","$id":"1"},{"_nestedFSM":{"_value":3},"_position":{"x":747.1073,"y":478.0586},"$type":"NodeCanvas.StateMachines.NestedFSMState","$id":"2"},{"_conditionList":{"conditions":[]},"_actionList":{"executionMode":1,"actions":[{"hunger":{"_name":"hunger","_targetVariableID":"c51efb7b-bbad-4475-b602-71f3bf9b75f3"},"hungerRate":1.0,"heat":{"_name":"heat","_targetVariableID":"ddf9ccdc-e1a0-4ae2-b313-00eb9c419af6"},"heatRate":1.0,"tiredness":{"_name":"tiredness","_targetVariableID":"dd30547f-15c8-465f-8340-9866ae743c44"},"tirednessRate":2.0,"poopness":{"_name":"poopness","_targetVariableID":"5892d270-9d26-4363-8f68-d41ec12a15e3"},"poopnessRate":3.0,"$type":"NodeCanvas.Tasks.Actions.NeedsDeprecatingAT"}]},"_position":{"x":703.637,"y":606.6708},"$type":"NodeCanvas.StateMachines.OnFSMUpdate"}],"connections":[{"_sourceNode":{"$ref":"0"},"_targetNode":{"$ref":"1"},"$type":"NodeCanvas.StateMachines.FSMConnection"},{"_condition":{"hunger":{"_name":"hunger","_targetVariableID":"c51efb7b-bbad-4475-b602-71f3bf9b75f3"},"heat":{"_name":"heat","_targetVariableID":"ddf9ccdc-e1a0-4ae2-b313-00eb9c419af6"},"tiredness":{"_name":"tiredness","_targetVariableID":"dd30547f-15c8-465f-8340-9866ae743c44"},"poopness":{"_name":"poopness","_targetVariableID":"5892d270-9d26-4363-8f68-d41ec12a15e3"},"hungerThreshold":25.0,"heatThreshold":10.0,"tirednessThreshold":75.0,"$type":"NodeCanvas.Tasks.Conditions.CheckingNeedsCT"},"_sourceNode":{"$ref":"0"},"_targetNode":{"$ref":"2"},"$type":"NodeCanvas.StateMachines.FSMConnection"},{"_condition":{"timeToWait":5.0,"$type":"NodeCanvas.Tasks.Conditions.WaitCT"},"_sourceNode":{"$ref":"1"},"_targetNode":{"$ref":"0"},"$type":"NodeCanvas.StateMachines.FSMConnection"},{"_condition":{"hunger":{"_name":"hunger","_targetVariableID":"c51efb7b-bbad-4475-b602-71f3bf9b75f3"},"heat":{"_name":"heat","_targetVariableID":"ddf9ccdc-e1a0-4ae2-b313-00eb9c419af6"},"tiredness":{"_name":"tiredness","_targetVariableID":"dd30547f-15c8-465f-8340-9866ae743c44"},"poopness":{"_name":"poopness","_targetVariableID":"5892d270-9d26-4363-8f68-d41ec12a15e3"},"hungerThreshold":25.0,"heatThreshold":10.0,"tirednessThreshold":75.0,"_invert":true,"$type":"NodeCanvas.Tasks.Conditions.CheckingNeedsCT"},"_sourceNode":{"$ref":"2"},"_targetNode":{"$ref":"0"},"$type":"NodeCanvas.StateMachines.FSMConnection"}],"canvasGroups":[],"localBlackboard":{"_variables":{}}}'
   _boundGraphObjectReferences:
   - {fileID: 0}
   - {fileID: 2100000, guid: 0d2d58444e527dc4995851be9bb28e18, type: 2}
@@ -1267,8 +1267,8 @@ MonoBehaviour:
     _version: 3.33
     _category: 
     _comments: 
-    _translation: {x: 105, y: 68}
-    _zoomFactor: 0.6066446
+    _translation: {x: -347, y: -212}
+    _zoomFactor: 0.9946174
   _firstActivation: 0
   _enableAction: 0
   _disableAction: 0
@@ -1291,10 +1291,10 @@ NavMeshAgent:
   m_Acceleration: 4
   avoidancePriority: 50
   m_AngularSpeed: 120
-  m_StoppingDistance: 0
+  m_StoppingDistance: 0.3
   m_AutoTraverseOffMeshLink: 1
   m_AutoBraking: 1
-  m_AutoRepath: 1
+  m_AutoRepath: 0
   m_Height: 0.52
   m_BaseOffset: 0.3
   m_WalkableMask: 4294967295
